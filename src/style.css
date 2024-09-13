@@ -1,0 +1,108 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contaner {
+  max-width: 1300px;
+  width: 100%;
+  padding: 2rem;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+}
+
+.container > form {
+  width: 50%;
+  display: flex;
+  gap: 5px;
+  margin: 2rem auto;
+}
+
+.container > form > input {
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid rgba(149, 149, 149, 0.695);
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-size: 1.2rem;
+}
+
+.container > form > button  {
+  width: 20%;
+  padding: 1rem;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background-color: rgb(35, 129, 184);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  border-radius: 75%;
+  padding: 5px;
+  border: none;
+  font-size: small;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: rgba(224, 116, 116, 0.747);
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: rgb(255, 237, 237);
+  padding: 1rem;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.todo > input {
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+}
+
+.todo > p {
+  font-weight: 600;
+}
+
+.todo > button:hover {
+  opacity: 0.8;
+}
+
+.textCut {
+  text-decoration: line-through;
+}
+
+.aDiv {
+  display: flex;
+  gap: 1rem;
+}

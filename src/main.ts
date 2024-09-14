@@ -6,7 +6,7 @@ interface Todo {
   readonly id: string;
 }
 
-const todos:Todo[] = [];
+let todos:Todo[] = [];
 
 const todosContiner = document.querySelector(
   ".todo-container"
@@ -16,6 +16,13 @@ const todoInput = document.getElementsByName("title")[0] as HTMLInputElement;
 
 const myForm = document.getElementById("myForm") as HTMLElement;
 
+document.addEventListener("DOMContentLoaded", () => {
+  const storedTodos = localStorage.getItem("todos");
+  if (storedTodos) {
+    todos = JSON.parse(storedTodos);
+    renderTodo(todos);
+  }
+});
 
 myForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -27,6 +34,7 @@ myForm.addEventListener("submit", (e) => {
   };
 
   todos.push(todo);
+  saveTodosToLocalStorage();
   todoInput.value = "";
   // console.log(todos);
 
@@ -50,6 +58,7 @@ const generateTodoItems = (title:string, isCompleted:boolean, id:string) => {
       if(item.id === id) item.isCompleted = checkbox.checked;
     })
     paragraph.className = isCompleted ? "textCut" : "";
+    saveTodosToLocalStorage();
   }
 
   //creating p for title
@@ -76,6 +85,7 @@ const generateTodoItems = (title:string, isCompleted:boolean, id:string) => {
 const deleteTodo = (id:string) => {
   const idx = todos.findIndex(item => item.id === id);
   todos.splice(idx, 1);
+  saveTodosToLocalStorage();
 
   renderTodo(todos);
 }
@@ -86,3 +96,8 @@ const renderTodo = (todos:Todo[]) => {
     generateTodoItems(item.title, item.isCompleted, item.id);
   })
 }
+
+
+const saveTodosToLocalStorage = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
